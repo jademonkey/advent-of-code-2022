@@ -1,7 +1,6 @@
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.util.ArrayList;
-import java.util.Collection;
 import java.util.Collections;
 import java.util.Comparator;
 
@@ -13,7 +12,6 @@ public class Day13 {
     public static void main(String[] args) {
         BufferedReader br = null;
         ArrayList<IntOrList> fullList = new ArrayList<IntOrList>();
-        int wrongOrderC = 0;
         int rightOrderPairTotals = 0;
 
         /* Parse input */
@@ -65,7 +63,6 @@ public class Day13 {
 
                 if (compareResult == 1) {
                     // System.out.println(String.format("Pair %d was in wrong order", pair));
-                    wrongOrderC++;
                 } else if (compareResult == -1) {
                     // System.out.println(String.format("Pair %d was in right order", pair));
                     rightOrderPairTotals += pair;

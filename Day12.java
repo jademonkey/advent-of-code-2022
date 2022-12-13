@@ -4,9 +4,6 @@ import java.util.Scanner;
 
 import javax.swing.JFrame;
 import javax.swing.JTextArea;
-import javax.swing.text.TextAction;
-
-import javax.swing.*;
 import java.awt.*;
 
 public class Day12 {
@@ -21,7 +18,6 @@ public class Day12 {
         JTextArea textArea;
 
         AStarNode[][] grid;
-        AStarNode[][] gridPart2;
 
         int x, y = 0;
 
@@ -80,7 +76,6 @@ public class Day12 {
             System.out.println("Grid created. finding A*");
 
             PrintGrid(grid);
-            gridPart2 = grid.clone();
 
             textArea = new JTextArea(y, x);
             textArea.setEditable(false);
@@ -561,25 +556,26 @@ public class Day12 {
         return false;
     }
 
-    private static void PrintGridInProgress(AStarNode[][] grid, int curX, int curY) {
-        for (int y = 0; y < grid.length; y++) {
-            for (int x = 0; x < grid[0].length; x++) {
-                if (grid[y][x].end) {
-                    System.out.print("X");
-                } else if (grid[y][x].start) {
-                    System.out.print("S");
-                } else if (curX == x && curY == y) {
-                    System.out.print("+");
-                } else if (grid[y][x].visited == false) {
-                    // System.out.print((char)grid[y][x].height);
-                    System.out.print(".");
-                } else if (grid[y][x].visited == true) {
-                    System.out.print("#");
-                }
-            }
-            System.out.println();
-        }
-    }
+    // private static void PrintGridInProgress(AStarNode[][] grid, int curX, int
+    // curY) {
+    // for (int y = 0; y < grid.length; y++) {
+    // for (int x = 0; x < grid[0].length; x++) {
+    // if (grid[y][x].end) {
+    // System.out.print("X");
+    // } else if (grid[y][x].start) {
+    // System.out.print("S");
+    // } else if (curX == x && curY == y) {
+    // System.out.print("+");
+    // } else if (grid[y][x].visited == false) {
+    // // System.out.print((char)grid[y][x].height);
+    // System.out.print(".");
+    // } else if (grid[y][x].visited == true) {
+    // System.out.print("#");
+    // }
+    // }
+    // System.out.println();
+    // }
+    // }
 
     private static String GetGridInProgress(AStarNode[][] grid, int curX, int curY) {
         String back = "";
@@ -626,114 +622,117 @@ public class Day12 {
         }
     }
 
-    private static void PrintGridF(AStarNode[][] grid) {
-        for (int y = 0; y < grid.length; y++) {
-            for (int x = 0; x < grid[0].length; x++) {
-                if (grid[y][x].end) {
-                    System.out.print("[0X0]");
-                } else if (grid[y][x].start) {
-                    System.out.print("[0S0]");
-                } else {
-                    System.out.print(String.format("[%03d]", grid[y][x].fScore));
-                }
-            }
-            System.out.println();
-        }
-    }
+    // private static void PrintGridF(AStarNode[][] grid) {
+    // for (int y = 0; y < grid.length; y++) {
+    // for (int x = 0; x < grid[0].length; x++) {
+    // if (grid[y][x].end) {
+    // System.out.print("[0X0]");
+    // } else if (grid[y][x].start) {
+    // System.out.print("[0S0]");
+    // } else {
+    // System.out.print(String.format("[%03d]", grid[y][x].fScore));
+    // }
+    // }
+    // System.out.println();
+    // }
+    // }
 
-    private static void PrintGridFMAxN(AStarNode[][] grid) {
-        for (int y = 0; y < grid.length; y++) {
-            for (int x = 0; x < grid[0].length; x++) {
-                if (grid[y][x].end) {
-                    System.out.print("[0X0]");
-                } else if (grid[y][x].start) {
-                    System.out.print("[0S0]");
-                } else {
-                    System.out.print(
-                            String.format("[%03d]", (grid[y][x].fScore == Integer.MAX_VALUE) ? -1 : grid[y][x].fScore));
-                }
-            }
-            System.out.println();
-        }
-    }
+    // private static void PrintGridFMAxN(AStarNode[][] grid) {
+    // for (int y = 0; y < grid.length; y++) {
+    // for (int x = 0; x < grid[0].length; x++) {
+    // if (grid[y][x].end) {
+    // System.out.print("[0X0]");
+    // } else if (grid[y][x].start) {
+    // System.out.print("[0S0]");
+    // } else {
+    // System.out.print(
+    // String.format("[%03d]", (grid[y][x].fScore == Integer.MAX_VALUE) ? -1 :
+    // grid[y][x].fScore));
+    // }
+    // }
+    // System.out.println();
+    // }
+    // }
 
-    private static void PrintGridConsidered(AStarNode[][] grid) {
-        for (int y = 0; y < grid.length; y++) {
-            for (int x = 0; x < grid[0].length; x++) {
-                if (grid[y][x].end) {
-                    System.out.print("X");
-                } else if (grid[y][x].start) {
-                    System.out.print("S");
-                } else {
-                    System.out.print(String.format("%c", (grid[y][x].fScore == Integer.MAX_VALUE) ? '.' : '#'));
-                }
-            }
-            System.out.println();
-        }
-    }
+    // private static void PrintGridConsidered(AStarNode[][] grid) {
+    // for (int y = 0; y < grid.length; y++) {
+    // for (int x = 0; x < grid[0].length; x++) {
+    // if (grid[y][x].end) {
+    // System.out.print("X");
+    // } else if (grid[y][x].start) {
+    // System.out.print("S");
+    // } else {
+    // System.out.print(String.format("%c", (grid[y][x].fScore == Integer.MAX_VALUE)
+    // ? '.' : '#'));
+    // }
+    // }
+    // System.out.println();
+    // }
+    // }
 
-    private static void PrintGridG(AStarNode[][] grid) {
-        for (int y = 0; y < grid.length; y++) {
-            for (int x = 0; x < grid[0].length; x++) {
-                if (grid[y][x].end) {
-                    System.out.print("[0X0]");
-                } else if (grid[y][x].start) {
-                    System.out.print("[0S0]");
-                } else {
-                    System.out.print(String.format("[%03d]", grid[y][x].gScore));
-                }
-            }
-            System.out.println();
-        }
-    }
+    // private static void PrintGridG(AStarNode[][] grid) {
+    // for (int y = 0; y < grid.length; y++) {
+    // for (int x = 0; x < grid[0].length; x++) {
+    // if (grid[y][x].end) {
+    // System.out.print("[0X0]");
+    // } else if (grid[y][x].start) {
+    // System.out.print("[0S0]");
+    // } else {
+    // System.out.print(String.format("[%03d]", grid[y][x].gScore));
+    // }
+    // }
+    // System.out.println();
+    // }
+    // }
 
-    private static void PrintGridH(AStarNode[][] grid) {
-        for (int y = 0; y < grid.length; y++) {
-            for (int x = 0; x < grid[0].length; x++) {
-                if (grid[y][x].end) {
-                    System.out.print("[0X0]");
-                } else if (grid[y][x].start) {
-                    System.out.print("[0S0]");
-                } else {
-                    System.out.print(String.format("[%03d]", grid[y][x].gScore + grid[y][x].fScore));
-                }
-            }
-            System.out.println();
-        }
-    }
+    // private static void PrintGridH(AStarNode[][] grid) {
+    // for (int y = 0; y < grid.length; y++) {
+    // for (int x = 0; x < grid[0].length; x++) {
+    // if (grid[y][x].end) {
+    // System.out.print("[0X0]");
+    // } else if (grid[y][x].start) {
+    // System.out.print("[0S0]");
+    // } else {
+    // System.out.print(String.format("[%03d]", grid[y][x].gScore +
+    // grid[y][x].fScore));
+    // }
+    // }
+    // System.out.println();
+    // }
+    // }
 
-    private static void PrintGridP(AStarNode[][] grid) {
-        // find lowest F
-        int lowF = Integer.MAX_VALUE;
-        for (int y = 0; y < grid.length; y++) {
-            for (int x = 0; x < grid[0].length; x++) {
-                if (lowF > grid[y][x].fScore) {
-                    lowF = grid[y][x].fScore;
-                }
-            }
-        }
+    // private static void PrintGridP(AStarNode[][] grid) {
+    // // find lowest F
+    // int lowF = Integer.MAX_VALUE;
+    // for (int y = 0; y < grid.length; y++) {
+    // for (int x = 0; x < grid[0].length; x++) {
+    // if (lowF > grid[y][x].fScore) {
+    // lowF = grid[y][x].fScore;
+    // }
+    // }
+    // }
 
-        PrintGridP(grid, lowF);
-    }
+    // PrintGridP(grid, lowF);
+    // }
 
-    private static void PrintGridP(AStarNode[][] grid, int lowF) {
-        // print grid now
-        for (int y = 0; y < grid.length; y++) {
-            for (int x = 0; x < grid[0].length; x++) {
-                if (grid[y][x].end) {
-                    System.out.print("X");
-                } else if (grid[y][x].start) {
-                    System.out.print("S");
-                } else if (grid[y][x].fScore == lowF) {
-                    System.out.print("#");
-                } else {
-                    System.out.print(".");
+    // private static void PrintGridP(AStarNode[][] grid, int lowF) {
+    // // print grid now
+    // for (int y = 0; y < grid.length; y++) {
+    // for (int x = 0; x < grid[0].length; x++) {
+    // if (grid[y][x].end) {
+    // System.out.print("X");
+    // } else if (grid[y][x].start) {
+    // System.out.print("S");
+    // } else if (grid[y][x].fScore == lowF) {
+    // System.out.print("#");
+    // } else {
+    // System.out.print(".");
 
-                }
-            }
-            System.out.println();
-        }
-    }
+    // }
+    // }
+    // System.out.println();
+    // }
+    // }
 }
 
 class AStarNode {
