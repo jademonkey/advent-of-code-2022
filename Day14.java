@@ -15,8 +15,8 @@ public class Day14 {
 
     public static void main(String[] args) {
         BufferedReader br = null;
-        String INPUT = ACTUAL_INPUT_14;
-        
+        String INPUT = EXAMPLE_INPUT_14;
+        int floorLength = 500;
 
         int minx = Integer.MAX_VALUE, maxx = 0, miny = 0, maxy = 0;
         int xOffset, yOffset, rested;
@@ -64,11 +64,11 @@ public class Day14 {
 
             // build cavern
             System.out.println(String.format("bounds = X: %d -> %d, y: %d -> %d", minx, maxx, miny, maxy));
-            xOffset = maxx - minx;
+            xOffset = floorLength;
             yOffset = maxy - miny;
-            cavern = new ArryFill[yOffset + 1][xOffset + 1];
+            cavern = new ArryFill[yOffset + 3][xOffset + 1];
 
-            textArea = new JTextArea(yOffset + 1, xOffset + 1);
+            textArea = new JTextArea(yOffset + 3, xOffset + 1);
             textArea.setEditable(false);
             Font f = new Font("Consolas", Font.PLAIN, 8);
             textArea.setFont(f);
@@ -81,11 +81,18 @@ public class Day14 {
 
             for (int y = 0; y < cavern.length; y++) {
                 for (int x = 0; x < cavern[0].length; x++) {
+                    if(y == cavern.length-1){
+                        cavern[y][x] = ArryFill.ROCK;
+                    } else{
                     cavern[y][x] = ArryFill.AIR;
+                    }
                 }
             }
-            textArea.setText(getArrayString(cavern));
-            System.out.println(getArrayString(cavern));
+            
+
+       //     textArea.setText(getArrayString(cavern));
+         //   System.out.println(getArrayString(cavern));
+
 
             while (true) {
                 // monkey header or none
@@ -123,12 +130,12 @@ public class Day14 {
                     if ((startY - endY) == 0) {
                         // x line
                         for (int i = startX; i <= endX; i++) {
-                            cavern[startY][i - minx] = ArryFill.ROCK;
+                            cavern[startY][(floorLength/2) + (i - minx)] = ArryFill.ROCK;
                         }
                     } else {
                         // y line
                         for (int i = startY; i <= endY; i++) {
-                            cavern[i][startX - minx] = ArryFill.ROCK;
+                            cavern[i][(floorLength/2)+(startX - minx)] = ArryFill.ROCK;
                         }
                     }
                 }
@@ -137,7 +144,7 @@ public class Day14 {
             System.out.println(getArrayString(cavern));
             textArea.setText(getArrayString(cavern));
 
-            rested = produceSand(cavern, 500 - minx, 0);
+            rested = produceSand(cavern, (floorLength/2) + (500 - minx), 0);
 
             System.out.println("--cavern end--");
             System.out.println(getArrayString(cavern));
@@ -225,7 +232,7 @@ public class Day14 {
                 desiredX = currentX;
                 desiredY = currentY+1;
                // System.out.println(getArrayString(toPrint));
-              //  textArea.setText(getArrayString(toPrint));
+                textArea.setText(getArrayString(toPrint));
             }
 
 
